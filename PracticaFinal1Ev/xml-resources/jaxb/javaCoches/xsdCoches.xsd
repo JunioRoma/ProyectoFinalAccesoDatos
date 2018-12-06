@@ -1,0 +1,24 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="coches">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="coche">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="precio"/>
+              <xs:element type="xs:string" name="peso"/>
+              <xs:element type="xs:string" name="estrellasSeguridad"/>
+              <xs:element type="xs:string" name="traccion"/>
+              <xs:element type="xs:string" name="tipoChasis"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="marca"/>
+            <xs:attribute type="xs:string" name="modelo"/>
+            <xs:attribute type="xs:string" name="anioSalida"/>
+            <xs:attribute type="xs:string" name="combustible"/>
+            <xs:attribute type="xs:string" name="potencia"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

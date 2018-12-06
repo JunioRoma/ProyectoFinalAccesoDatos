@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/D:/Documentos/NetBeansProjects/Android_iSonidos2018_2/PracticaFinal1Ev/../../../../DAM2/Acceso%20a%20Datos/PracticaFinal/xsdCoches.xsd" uri="xml-resources/jaxb/javaCoches/xsdCoches.xsd"/>
+</catalog>

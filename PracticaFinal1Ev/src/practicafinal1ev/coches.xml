@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<coches>
+
+	<coche marca="bmw" modelo="serie1" anioSalida="2015">
+		
+		<precioMotores>
+			<motor  combustible="gasolina" potencia="180cv">26.000€</motor>
+			<motor  combustible="gasolina" potencia="220cv">29.000€</motor>
+			<motor  combustible="gasolina" potencia="350cv">45.000€</motor>
+			
+			<motor  combustible="diesel" potencia="160cv">26.000€</motor>
+			<motor  combustible="diesel" potencia="180cv">27.000€</motor>
+			<motor  combustible="diesel" potencia="260cv">35.000€</motor>
+		
+		</precioMotores>
+		
+		
+		<peso>1.400kg</peso>
+		<estrellasSeguridad>4.5</estrellasSeguridad>
+		<traccion>trasera</traccion>
+		<tipoChasis>turismo</tipoChasis>
+	
+	</coche>
+	
+</coches>
