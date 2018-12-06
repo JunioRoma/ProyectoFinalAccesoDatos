@@ -7,8 +7,13 @@ package practicafinal1ev;
 
 import java.awt.Color;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -759,21 +764,69 @@ public class Formulario extends javax.swing.JFrame {
             //A través de los ifs seleccionamos lo que ocurre dependiendo del botón que esté seleccionado.
             if (jRadioButton5.isSelected()) {
                 consulta = "/coches/coche"; //Damos un valor a la variable consulta
-                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta)); //Se ejecuta el método del XPath y aparece en el textArea
+                try {
+                    panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta, fichero)); //Se ejecuta el método del XPath y aparece en el textArea
+                } catch (ParserConfigurationException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SAXException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else if (jRadioButton2.isSelected()) {
                 consulta = "/coches/coche/@marca";
-                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
+                try {
+                    panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta, fichero));
+                } catch (ParserConfigurationException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SAXException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else if (jRadioButton3.isSelected()) {
                 consulta = "/coches/coche/precio";
-                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
+                try {
+                    panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta, fichero));
+                } catch (ParserConfigurationException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SAXException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else if (jRadioButton4.isSelected()) {
                 consulta = "/coches/coche/peso";
-                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
+                try {
+                    panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta, fichero));
+                } catch (ParserConfigurationException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SAXException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else if (jRadioButton1.isSelected()) {
                 consulta = "/coches/coche[./modelo='" + verModelo + "']"; //Obtenemos el valor escrito en el textfield y
-                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));    //se lo asignamos al string que asignamos como valor
+                try {
+                    panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta, fichero));    //se lo asignamos al string que asignamos como valor
+                } catch (ParserConfigurationException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SAXException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
+            try {
+                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta, fichero));
+            } catch (ParserConfigurationException ex) {
+                Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SAXException ex) {
+                Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         } else if (temp == -1) {
             panelDeTexto.setText("No se puede mostrar el contenido del árbol");
