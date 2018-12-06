@@ -186,6 +186,10 @@ public class MakeJAxbSax {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    int editarJaxB(String marca, String modelo, String anio, String potencia, String combustible, String precio, String peso, String seguridad, String traccion, String tipo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     //No consigo hacer que este metodo funcione como deberia he probado demasiadas cosas y ns pq me sigue saltando tantos errores
     class ManejadorSAX extends DefaultHandler {
 

@@ -160,7 +160,9 @@ public class Formulario extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
+        filtrarModelo = new javax.swing.JTextField();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -363,15 +365,24 @@ public class Formulario extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton1.setText("Muestra todo los datos de coche");
+        jRadioButton1.setText("Filtra por modelo");
 
-        jRadioButton2.setText("Muestra todo los datos de coche");
+        jRadioButton2.setText("Muestra la marca");
 
-        jRadioButton3.setText("Muestra todo los datos de coche");
+        jRadioButton3.setText("Muestra el precio");
 
-        jRadioButton4.setText("Muestra todo los datos de coche");
+        jRadioButton4.setText("Muestra peso");
 
-        jTextField1.setText("Tipo de Marca");
+        filtrarModelo.setText("Tipo de Modelo");
+
+        jRadioButton5.setText("Muestra todo los datos de coche");
+
+        jButton1.setText("jButton1");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+        });
 
         jMenu1.setText("ABRIR ");
 
@@ -468,16 +479,21 @@ public class Formulario extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(BotonEjecutarXml, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BotonEjecutarXml2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(BotonEjecutarXml, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(BotonEjecutarXml2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton1))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -488,14 +504,19 @@ public class Formulario extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jRadioButton2)
                                             .addComponent(jRadioButton3)
-                                            .addComponent(jRadioButton4))
+                                            .addComponent(jRadioButton4)
+                                            .addComponent(jRadioButton5))
                                         .addGap(205, 205, 205))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButton1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField1)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jRadioButton2)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jRadioButton1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(filtrarModelo)))
                                         .addGap(34, 34, 34)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(BotonEjecutarXml1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -505,7 +526,7 @@ public class Formulario extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(MostradorDePanorama)
@@ -594,13 +615,15 @@ public class Formulario extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(BotonEjecutarXml, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel11))
+                            .addComponent(jLabel11)
+                            .addGap(113, 113, 113)
+                            .addComponent(jButton1))
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButton1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(filtrarModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jRadioButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -612,7 +635,9 @@ public class Formulario extends javax.swing.JFrame {
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotonEjecutarXml1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(51, 51, 51))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jRadioButton5)
+                .addGap(39, 39, 39))
         );
 
         pack();
@@ -657,42 +682,32 @@ public class Formulario extends javax.swing.JFrame {
 //
 //        panelDeTexto.setText(ventanaXpath.EjecutaXPath(texto));
 
-String consulta=""; //Aquí vamos a guardar el parámetro de entrada que le vamos a pasar.
-        String seleccionClub=jTextField3.getText();  //Variable que vamos a usar en la consulta
-        int temp=ventanaJaxbSax.abrirDom();
+        String consulta = ""; //Aquí vamos a guardar el parámetro de entrada que le vamos a pasar.
+        String verModelo = filtrarModelo.getText();  //Variable que vamos a usar en la consulta
+        int temp = ventanaJaxbSax.abrirDom();
         //Creamos una estructura con el árbol DOM y, si se crea correctamente, ejecutamos el XPath
-        if(temp==0){
-           //A través de los ifs seleccionamos lo que ocurre dependiendo del botón que esté seleccionado.
-           if(jRadioButton1.isSelected()){
-              consulta="/perros/perro"; //Damos un valor a la variable consulta
-              jTextArea1.setText(gesDom.ejecutaXPATH(consulta)); //Se ejecuta el método del XPath y aparece en el textArea     
-           }else if(jRadioButton2.isSelected()){
-              consulta="/perros/perro/@afijo";
-              jTextArea1.setText(gesDom.ejecutaXPATH(consulta));
-           }else if(jRadioButton3.isSelected()){
-              consulta="/perros/perro/raza";
-              jTextArea1.setText(gesDom.ejecutaXPATH(consulta));
-           }else if(jRadioButton4.isSelected()){
-              consulta="/perros/perro/deporte";
-              jTextArea1.setText(gesDom.ejecutaXPATH(consulta));
-           }else if(jRadioButton5.isSelected()){
-              consulta="/perros/perro[./club='"+seleccionClub+"']"; //Obtenemos el valor escrito en el textfield y
-              jTextArea1.setText(gesDom.ejecutaXPATH(consulta));    //se lo asignamos al string que asignamos como valor
-           }else if(jRadioButton7.isSelected()){                    //a la variable consulta.
-               String cajaSeleccionada=(String) jComboBox1.getSelectedItem(); //Tomamos el valor del jComboBox. Casteamos a
-               if(cajaSeleccionada.equals("Brevet")){                         //String porque getSelectedItem no devuelve String
-                 consulta="/perros/perro[./grado='Brevet']";
-               }else if(cajaSeleccionada.equals("Grado 1")){
-                 consulta="/perros/perro[./grado='1']";  
-               }else if(cajaSeleccionada.equals("Grado 2")){ //Dependiendo de cual caja del jComboBox esté seleccionada
-                 consulta="/perros/perro[./grado='2']";      //ejecutará una consulta u otra.
-               }else if(cajaSeleccionada.equals("Grado 3")){
-                 consulta="/perros/perro[./grado='3']";
-               }
-              jTextArea1.setText(gesDom.ejecutaXPATH(consulta));
-           }
-        }else if(temp==-1){
-           jTextArea1.setText("No se puede mostrar el contenido del árbol");
+        if (temp == 0) {
+            //A través de los ifs seleccionamos lo que ocurre dependiendo del botón que esté seleccionado.
+            if (jRadioButton5.isSelected()) {
+                consulta = "/coches/coche"; //Damos un valor a la variable consulta
+                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta)); //Se ejecuta el método del XPath y aparece en el textArea     
+            } else if (jRadioButton2.isSelected()) {
+                consulta = "/coches/coche/@marca";
+                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
+            } else if (jRadioButton3.isSelected()) {
+                consulta = "/coches/coche/precio";
+                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
+            } else if (jRadioButton4.isSelected()) {
+                consulta = "/coches/coche/peso";
+                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
+            } else if (jRadioButton1.isSelected()) {
+                consulta = "/coches/coche[./modelo='" + verModelo + "']"; //Obtenemos el valor escrito en el textfield y
+                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));    //se lo asignamos al string que asignamos como valor
+            }
+            panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
+
+        } else if (temp == -1) {
+            panelDeTexto.setText("No se puede mostrar el contenido del árbol");
         }
 
     }//GEN-LAST:event_BotonEjecutarXml1MousePressed
@@ -734,7 +749,6 @@ String consulta=""; //Aquí vamos a guardar el parámetro de entrada que le vamo
 
     private void jLabel16MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MousePressed
 
-
         String marca = marca1.getText();
         String modelo = modelo1.getText();
         String anio = anio1.getText();
@@ -751,7 +765,7 @@ String consulta=""; //Aquí vamos a guardar el parámetro de entrada que le vamo
         //Si el método abrirDom nos devuelve 0, procesamos el contenido del árbol y lo mostramos.
         if (temp == 0) {
             //Añadimos un nuevo elemento perro al árbol DOM.
-            ventanaJaxbSax.annadirDom( marca,  modelo,  anio,  potencia,  combustible,  precio,  peso,  seguridad,  traccion,  tipo);
+            ventanaJaxbSax.annadirDom(marca, modelo, anio, potencia, combustible, precio, peso, seguridad, traccion, tipo);
             //En el String datos guardamos el contenido del árbol
             datos = ventanaJaxbSax.recorrerDom();
             panelDeTexto.setText(datos); //Sacamos el contenido del árbol por pantalla
@@ -763,8 +777,51 @@ String consulta=""; //Aquí vamos a guardar el parámetro de entrada que le vamo
     }//GEN-LAST:event_jLabel16MousePressed
 
     private void jLabel19MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MousePressed
-       
+        guardaArchivo();
     }//GEN-LAST:event_jLabel19MousePressed
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        // Botón que controla las modificaciones con JAXB
+        //Obtenemos los datos de los textareas.
+         String marca = marca1.getText();
+        String modelo = modelo1.getText();
+        String anio = anio1.getText();
+        String potencia = potencia1.getText();
+        String combustible = combustible1.getText();
+        String precio = precio1.getText();
+        String peso = peso1.getText();
+        String seguridad = seguridad1.getText();
+        String traccion = traccion1.getText();
+        String tipo = tipo1.getText();
+        //Guardamos el valor int que nos devuelve JaxB en un int.
+        int valor = ventanaJaxbSax.editarJaxB(marca,  modelo,  anio,  potencia,  combustible,  precio,  peso,  seguridad,  traccion,  tipo);
+        //Si el valor del int es 0.
+        if (valor == 0) {
+            String aux[] = ventanaJaxbSax.recorrerJaxB(precio); //Recorre JaxB y nos lo guarda en un array de strings, pasándole el chip como parámetro.
+            String salida = ""; //Declaramos un String que nos va a permitir visualizar el contenido por pantalla
+            for (int i = 0; i < 10; i++) {
+                salida = salida + "\n" + aux[i];  //A través de este bucle for guardamos el contenido del array en 
+            }                                   //un String.
+            panelDeTexto.setText(salida); //Sacamos el String por pantalla.
+        } else if (valor == -1) {
+            panelDeTexto.setText("No se ha podido editar");
+        }
+
+        //Vamos a colocar los valores en 0 y reiniciar. Así el usuario puede hacer inserciones nuevas sin problema
+        //Limpiamos los textFields.
+        this.marca.setText("");
+        this.anio.setText("");
+        this.potencia.setText("");
+        this.potencia.setText("");
+        this.combustible.setText("");
+        this.precio.setText("");
+        this.peso.setText("");
+        this.seguridad.setText("");
+        this.traccion.setText(""); 
+        this.tipo.setText("");
+        //Le damos valor al int para poder proceder al guardado.
+        valorDeGuardado = 2;
+    }//GEN-LAST:event_jButton1MousePressed
 
     /**
      * @param args the command line arguments
@@ -812,6 +869,8 @@ String consulta=""; //Aquí vamos a guardar el parámetro de entrada que le vamo
     private javax.swing.JTextField campoBusqueda;
     private javax.swing.JTextField combustible;
     private javax.swing.JTextField combustible1;
+    private javax.swing.JTextField filtrarModelo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -838,9 +897,9 @@ String consulta=""; //Aquí vamos a guardar el parámetro de entrada que le vamo
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField marca;
     private javax.swing.JTextField marca1;
     private javax.swing.JTextField modelo1;
