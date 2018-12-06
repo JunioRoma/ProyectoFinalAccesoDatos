@@ -308,7 +308,7 @@ public class MakeJAxbSax {
     
 
     
-    public int abrirDom(){
+    public int abrirDom(File fichero){
        try{
            //Creamos un DocumentBuilderFactory que nos permitirá crear el DocumentBUilder
            DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
@@ -319,11 +319,11 @@ public class MakeJAxbSax {
            //la estructura del árbol DOM a partir del XML que le hemos pasado.
            DocumentBuilder builder=factory.newDocumentBuilder();
            //Parseamos el fichero y generamos un DOM equivalente al fichero XML. El doc apunta al comienzo del árbol.
-           doc=builder.parse(ficheroXML);
+           doc=builder.parse(fichero);
                   
            return 0;
        
-       }catch(Exception e){
+       }catch(Exception e){System.out.println("jewbfjwdb");
           e.printStackTrace();
           return -1;
        }

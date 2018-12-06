@@ -676,46 +676,6 @@ public class Formulario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void BotonEjecutarXml1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEjecutarXml1MousePressed
-//        String texto = BlocDeConsultas.getText();
-//        ventanaXpath.EjecutaXPath(texto);
-//
-//        panelDeTexto.setText(ventanaXpath.EjecutaXPath(texto));
-
-        String consulta = ""; //Aquí vamos a guardar el parámetro de entrada que le vamos a pasar.
-        String verModelo = filtrarModelo.getText();  //Variable que vamos a usar en la consulta
-        int temp = ventanaJaxbSax.abrirDom();
-        //Creamos una estructura con el árbol DOM y, si se crea correctamente, ejecutamos el XPath
-        if (temp == 0) {
-            //A través de los ifs seleccionamos lo que ocurre dependiendo del botón que esté seleccionado.
-            if (jRadioButton5.isSelected()) {
-                consulta = "/coches/coche"; //Damos un valor a la variable consulta
-                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta)); //Se ejecuta el método del XPath y aparece en el textArea     
-            } else if (jRadioButton2.isSelected()) {
-                consulta = "/coches/coche/@marca";
-                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
-            } else if (jRadioButton3.isSelected()) {
-                consulta = "/coches/coche/precio";
-                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
-            } else if (jRadioButton4.isSelected()) {
-                consulta = "/coches/coche/peso";
-                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
-            } else if (jRadioButton1.isSelected()) {
-                consulta = "/coches/coche[./modelo='" + verModelo + "']"; //Obtenemos el valor escrito en el textfield y
-                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));    //se lo asignamos al string que asignamos como valor
-            }
-            panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
-
-        } else if (temp == -1) {
-            panelDeTexto.setText("No se puede mostrar el contenido del árbol");
-        }
-
-    }//GEN-LAST:event_BotonEjecutarXml1MousePressed
-
-    private void BotonEjecutarXml1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEjecutarXml1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BotonEjecutarXml1ActionPerformed
-
     private void BotonEjecutarXml2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEjecutarXml2MousePressed
         guardarJFile();
     }//GEN-LAST:event_BotonEjecutarXml2MousePressed
@@ -749,6 +709,7 @@ public class Formulario extends javax.swing.JFrame {
 
     private void jLabel16MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MousePressed
 
+        File fichero = abrirJFile();
         String marca = marca1.getText();
         String modelo = modelo1.getText();
         String anio = anio1.getText();
@@ -760,7 +721,7 @@ public class Formulario extends javax.swing.JFrame {
         String traccion = traccion1.getText();
         String tipo = tipo1.getText();
         //Guardamos el valor que nos devuelve el método abrirDom en esta variable int
-        int temp = ventanaJaxbSax.abrirDom();
+        int temp = ventanaJaxbSax.abrirDom(fichero);
         String datos = ""; //Nos va a permitir sacar el DOM con la inserción por pantalla para comprobar que se ha hecho correctamente
         //Si el método abrirDom nos devuelve 0, procesamos el contenido del árbol y lo mostramos.
         if (temp == 0) {
@@ -780,10 +741,49 @@ public class Formulario extends javax.swing.JFrame {
         guardaArchivo();
     }//GEN-LAST:event_jLabel19MousePressed
 
+    private void BotonEjecutarXml1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEjecutarXml1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonEjecutarXml1ActionPerformed
+
+    private void BotonEjecutarXml1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEjecutarXml1MousePressed
+        //        String texto = BlocDeConsultas.getText();
+        //        ventanaXpath.EjecutaXPath(texto);
+        //
+        //        panelDeTexto.setText(ventanaXpath.EjecutaXPath(texto));
+        File fichero = abrirJFile();
+        String consulta = ""; //Aquí vamos a guardar el parámetro de entrada que le vamos a pasar.
+        String verModelo = filtrarModelo.getText();  //Variable que vamos a usar en la consulta
+        int temp = ventanaJaxbSax.abrirDom(fichero);
+        //Creamos una estructura con el árbol DOM y, si se crea correctamente, ejecutamos el XPath
+        if (temp == 0) {
+            //A través de los ifs seleccionamos lo que ocurre dependiendo del botón que esté seleccionado.
+            if (jRadioButton5.isSelected()) {
+                consulta = "/coches/coche"; //Damos un valor a la variable consulta
+                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta)); //Se ejecuta el método del XPath y aparece en el textArea
+            } else if (jRadioButton2.isSelected()) {
+                consulta = "/coches/coche/@marca";
+                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
+            } else if (jRadioButton3.isSelected()) {
+                consulta = "/coches/coche/precio";
+                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
+            } else if (jRadioButton4.isSelected()) {
+                consulta = "/coches/coche/peso";
+                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
+            } else if (jRadioButton1.isSelected()) {
+                consulta = "/coches/coche[./modelo='" + verModelo + "']"; //Obtenemos el valor escrito en el textfield y
+                panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));    //se lo asignamos al string que asignamos como valor
+            }
+            panelDeTexto.setText(ventanaXpath.EjecutaXPath(consulta));
+
+        } else if (temp == -1) {
+            panelDeTexto.setText("No se puede mostrar el contenido del árbol");
+        }
+    }//GEN-LAST:event_BotonEjecutarXml1MousePressed
+
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         // Botón que controla las modificaciones con JAXB
         //Obtenemos los datos de los textareas.
-         String marca = marca1.getText();
+        String marca = marca1.getText();
         String modelo = modelo1.getText();
         String anio = anio1.getText();
         String potencia = potencia1.getText();
@@ -794,13 +794,13 @@ public class Formulario extends javax.swing.JFrame {
         String traccion = traccion1.getText();
         String tipo = tipo1.getText();
         //Guardamos el valor int que nos devuelve JaxB en un int.
-        int valor = ventanaJaxbSax.editarJaxB(marca,  modelo,  anio,  potencia,  combustible,  precio,  peso,  seguridad,  traccion,  tipo);
+        int valor = ventanaJaxbSax.editarJaxB(marca, modelo, anio, potencia, combustible, precio, peso, seguridad, traccion, tipo);
         //Si el valor del int es 0.
         if (valor == 0) {
             String aux[] = ventanaJaxbSax.recorrerJaxB(precio); //Recorre JaxB y nos lo guarda en un array de strings, pasándole el chip como parámetro.
             String salida = ""; //Declaramos un String que nos va a permitir visualizar el contenido por pantalla
             for (int i = 0; i < 10; i++) {
-                salida = salida + "\n" + aux[i];  //A través de este bucle for guardamos el contenido del array en 
+                salida = salida + "\n" + aux[i];  //A través de este bucle for guardamos el contenido del array en
             }                                   //un String.
             panelDeTexto.setText(salida); //Sacamos el String por pantalla.
         } else if (valor == -1) {
@@ -817,7 +817,7 @@ public class Formulario extends javax.swing.JFrame {
         this.precio.setText("");
         this.peso.setText("");
         this.seguridad.setText("");
-        this.traccion.setText(""); 
+        this.traccion.setText("");
         this.tipo.setText("");
         //Le damos valor al int para poder proceder al guardado.
         valorDeGuardado = 2;

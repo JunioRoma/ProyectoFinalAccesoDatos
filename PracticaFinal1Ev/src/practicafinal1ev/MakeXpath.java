@@ -24,47 +24,93 @@ import org.w3c.dom.Text;
  */
 public class MakeXpath {
 
-   
     Document doc = null;
 
     public String EjecutaXPath(String Texto) {
-        Node node;
-         String salida = "";
-        
-        try {
-
-            //Crea el objeto Xpath
-            XPath xpath = XPathFactory.newInstance().newXPath();
-
-            //Crea un XpathExpression con la consulta deseada
-            XPathExpression exp = xpath.compile(Texto);
-
-            //Ejecuta la consulta indicando que se ejecute sobre el DOM y que 
-            //devolvera el resultado como una lista de nodos
-            Object result = exp.evaluate(doc, XPathConstants.NODESET);
-            NodeList nodeList = (NodeList) result;
-
-            //Ahora recorre la lista para sacar los resultados
-            for (int i = 0; i < nodeList.getLength(); i++) {
-                
-                node = nodeList.item(i);
-                //Con el getAtributtes y el content consigo leer el resto de nodos
-                salida = salida + "\n" + "Marca; " + nodeList.item(i).getAttributes().getNamedItem("marca").getNodeValue();
-                salida = salida + "\n" + "Modelo; " + nodeList.item(i).getAttributes().getNamedItem("modelo").getNodeValue();
-                salida = salida + "\n" + "Año de salida; " + nodeList.item(i).getAttributes().getNamedItem("anioSalida").getNodeValue();
-                salida = salida + "\n" + "Potencia; " + nodeList.item(i).getAttributes().getNamedItem("potencia").getNodeValue();
-                salida = salida + "\n" + "Combustible; " + nodeList.item(i).getAttributes().getNamedItem("combustible").getNodeValue();
-                salida = salida + "\n" + nodeList.item(i).getNodeName() +  node.getTextContent().equals("precio");
+         String datos_nodo[]=null;
+           String salida="";
+           Node node;
+           
+           try{
+               //Creamos un objeto XPATH.
+               XPath path=XPathFactory.newInstance().newXPath();
+               //Creamos un XPATHEXPRESSION con la consulta deseada. La consulta se la vamos a pasar como parámetro
+               //de entrada a través de los radiobuttons.
+               XPathExpression exp=path.compile(Texto);
+               //Ejecuta la consulta sobre el DOM y devuelve el resultado en una lista de nodos que hay que procesar.
+               Object result=exp.evaluate(doc, XPathConstants.NODESET);
+               NodeList lista=(NodeList)result;
+               //Recorremos la lista con un bucle for para sacar los resultados.
+               for(int i=0;i<lista.getLength(); i++){
+                   node=lista.item(i); //Analizamos el objeto en la lista en la posición i.
+                   //En caso de que el nodo sea de tipo elemento y el nombre del elemento sea perro, ejecutamos
+                   //el mismo código con el que procesábamos los perros para que nos dé todos los resultados.
+                   if(node.getNodeType()==Node.ELEMENT_NODE && node.getNodeName()=="coche"){
+                      datos_nodo=leeListaCoches(node);
+                      
+                       //En salida guardamos el valor del array datos_nodo ya procesado
+                        salida=salida + "\n" + "Chip; " + datos_nodo[1];
+                         salida=salida + "\n" + "Afijo; " + datos_nodo[0];
+                          salida=salida + "\n" + "Nacimiento; " + datos_nodo[2];
+                           salida=salida + "\n" + "Nombre; " + datos_nodo[3];
+                            salida=salida + "\n" + "Raza; " + datos_nodo[4];
+                             salida=salida + "\n" + "Sexo; " + datos_nodo[5];
+                              salida=salida + "\n" + "Propietario; " + datos_nodo[6];
+                               salida=salida + "\n" + "Deporte; " + datos_nodo[7];
+                                salida=salida + "\n" + "Grado; " + datos_nodo[8];
+                                 salida=salida + "\n" + "Club; " + datos_nodo[9];
+                                  salida=salida + "\n" + "---------------------------";                                   
+                   }else if(node.getNodeType()==Node.ELEMENT_NODE && (node.getNodeName()=="raza" || node.getNodeName()=="sexo"
+                           || node.getNodeName()=="deporte" || node.getNodeName()=="grado" || node.getNodeName()=="club")){
+                       //Procedemos a analizar los nodos tipo elemento hijos de perro.
+                       salida=salida + "\n" + lista.item(i).getChildNodes().item(0).getNodeValue();
+                   }else if(node.getNodeType()==Node.ATTRIBUTE_NODE && (node.getNodeName()=="afijo" || node.getNodeName()=="nacimiento")){
+                       //Obtenemos los atributos
+                       salida=salida + "\n" + lista.item(i).getChildNodes().item(0).getNodeValue();
+                   }
                
-                
-                
-                salida = salida +"\n" + "---------------------------------------------";
+               }
+           
+           
+           }catch(Exception ex){
+              salida="Error: " + ex.toString();
+              return salida;
+           }
+           
+           
+           return salida;
+    }
+    
+    
+    protected String[] leeListaCoches(Node n){
+        String datos[]=new String[10]; //Declaramos un array de 10 que es lo que nos va a devolver con el contenido del árbol
+        Node ntemp=null; //Declaramos un nodo temporal para poder procesar los nodos hijo.
+        int contador=5; //Lo vamos a usar para movernos por las posiciones dentro del array.
+      try{  
+        //Dentro del array guardamos los valores de los nodos atributo.
+        datos[0]=n.getAttributes().item(0).getNodeValue();
+        datos[1]=n.getAttributes().item(1).getNodeValue();
+        datos[2]=n.getAttributes().item(2).getNodeValue();
+        datos[3]=n.getAttributes().item(3).getNodeValue();
+        datos[4]=n.getAttributes().item(4).getNodeValue();
+        //Dentro de una lista de nodos guardamos todos los nodos hijo 
+        NodeList nodos=n.getChildNodes();
+        //Procesamos a través de un bucle for.
+        for(int i=0; i<nodos.getLength();i++){
+            ntemp=nodos.item(i); //ntemp adopta el valor del elemento de la lista de nodos en la posición i en cada vuelta del bucle
+            //En caso que el tipo de nodo de ntemp sea tipo elemento, ejecutamos el código.
+            if(ntemp.getNodeType()==Node.ELEMENT_NODE){
+                //Accedemos al nodo hijo de los nodos tipo elemento para poder obtener el valor texto. Los nodos hijo
+                //de nombre, propietario, etc, son nodos texto donde se almacena el contenido textual del nodo.
+                datos[contador]=ntemp.getChildNodes().item(0).getNodeValue();
+                contador++;  //El contador nos mueve a través de la posición del array.
             }
-            return salida;
-        } catch (Exception e) {
-            System.out.println("Error: " + e.toString());
         }
-        return Texto;
+      }catch(Exception e){
+         e.printStackTrace();
+      }
+        
+        return datos;
     }
 
     public int abrirDOM(File fichero) {
@@ -92,8 +138,5 @@ public class MakeXpath {
             return -1;
         }
     }
-    
-    
-    
-    
+
 }
